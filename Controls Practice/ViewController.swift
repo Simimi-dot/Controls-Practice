@@ -18,7 +18,11 @@ class ViewController: UIViewController {
     
     var number = 128 {
         didSet {
-            number = (number + 256) % 256
+            if number < 0 {
+                number = 255
+            } else if number > 255 {
+                number = 0
+            }
             updateUI()
         }
     }
@@ -62,7 +66,6 @@ class ViewController: UIViewController {
     }
 
     
-
     @IBAction func buttonPressed() {
         number += 1
         
